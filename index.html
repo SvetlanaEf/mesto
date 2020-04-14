@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Место</title>
+    <link rel="stylesheet" href="pages/index.css">
+</head>
+
+<body class="root">
+    <main class="page">
+        <header class="header">
+            <a href="/">
+                <img src="images/mesto.svg" class="header__logo" alt="Логотип Места России">
+            </a>
+        </header>
+
+        <div class="profile">
+            <img class="profile__avatar" src="images/kusto.jpg" alt="Жак-Ив Кусто">
+            <div class="profile__info">
+                <div class="profile__info-content">
+                    <h1 class="profile__title">Жак-Ив Кусто</h1>
+                    <button class="profile__edit-button">
+                        <img src="images/karandash.svg" alt="кнопка для редактирования">
+                    </button>
+                </div>
+                <p class="profile__subtitle">Исследователь океана</p>
+            </div>
+            <button class="profile__add-button">
+                <img src="images/plus.svg" alt="кнопка с плюсом">
+            </button>
+        </div>
+
+        <div class="elements">
+            <div class="element">
+                <img class="element__image" src="images/karachaevsk1_3.jpg" alt="Карачаевск">
+                <div class="element__info">
+                    <span class="element__name">Карачаевск</span>
+                    <button class="element__like">
+                        <img src="images/like.svg" alt="Поставить лайк">
+                    </button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="images/elbrus2_1.jpg" alt="Эльбрус">
+                <div class="element__info">
+                    <span class="element__name">Эльбрус</span>
+                    <button class="element__like">
+                        <img src="images/like.svg" alt="Поставить лайк">
+                    </button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="images/dombay3_2.jpg" alt="Домбай">
+                <div class="element__info">
+                    <span class="element__name">Домбай</span>
+                    <button class="element__like">
+                        <img src="images/like.svg" alt="Поставить лайк">
+                    </button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="images/elbrus2_1.jpg" alt="Эльбрус">
+                <div class="element__info">
+                    <span class="element__name">Эльбрус</span>
+                    <button class="element__like">
+                        <img src="images/like.svg" alt="Поставить лайк">
+                    </button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="images/dombay3_2.jpg" alt="Домбай">
+                <div class="element__info">
+                    <span class="element__name">Домбай</span>
+                    <button class="element__like">
+                        <img src="images/like.svg" alt="Поставить лайк">
+                    </button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="images/karachaevsk1_3.jpg" alt="Карачаевск">
+                <div class="element__info">
+                    <span class="element__name">Карачаево-Черкессия</span>
+                    <button class="element__like">
+                        <img src="images/like.svg" alt="Поставить лайк">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <span class="footer__text">© 2020 Mesto Russia</span>
+        </footer>
+        
+        <div class="popup">
+            <div class="popup__container">
+                <button class="popup__close"></button>
+                 <h3 class="popup__title">Редактировать профиль</h3>
+                 <form class="popup__form">
+                     <input type="text" class="popup__form-input" placeholder="Имя" name="name">
+                     <input type="text" class="popup__form-input" placeholder="Должность" name="post">
+                     <button type="submit" class="popup__form-submit">Сохранить</button>
+                  </form>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="js/index.js"></script>
+</body>
