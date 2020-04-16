@@ -9,8 +9,8 @@ const profileSubtitle = document.querySelector('.profile__subtitle');
 
 editProfileButton.addEventListener('click', () => {
     popup.classList.add('popup_opened');
-    popupNameInput.setAttribute('value', profileTitle.innerText);
-    popupPostInput.setAttribute('value', profileSubtitle.innerText);
+    popupNameInput.value = profileTitle.innerText;
+    popupPostInput.value = profileSubtitle.innerText;
 });
 
 popupClose.addEventListener('click', () => {

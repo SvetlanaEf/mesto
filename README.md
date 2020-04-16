@@ -5,7 +5,7 @@
 В проекте используются следующие технологии:
 
 HTML
-CSS (Animations, Grid, Flex)
+CSS (Grid, Flex)
 БЭМ (Nested)
 Адаптивная верстка
 Java script
