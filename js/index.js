@@ -28,5 +28,5 @@ popupForm.addEventListener('submit', event => {
     event.preventDefault();
     profileTitle.innerText = popupNameInput.value;
     profileSubtitle.innerText = popupPostInput.value;
-    popup.classList.remove('popup_opened');
+    popupToggle();
 });
