@@ -8,13 +8,14 @@
 </head>
 
 <body class="root">
-    <section class="page">
+    <div class="page">
         <header class="header">
             <a href="/">
                 <img src="images/mesto.svg" class="header__logo" alt="Логотип Места России">
             </a>
         </header>
 
+    <main class="content">
         <section class="profile">
             <img class="profile__avatar" src="images/kusto.jpg" alt="Жак-Ив Кусто">
             <div class="profile__info">
@@ -88,10 +89,6 @@
             </div>
         </section>
 
-        <footer class="footer">
-            <span class="footer__text">© 2020 Светлана Ефимова</span>
-        </footer>
-        
         <section class="popup">
             <div class="popup__container">
                 <button class="popup__close"></button>
@@ -103,8 +100,12 @@
                   </form>
             </div>
         </section>
-
-    </section>
-
+    </main>
+        <footer class="footer">
+            <span class="footer__text">© 2020 Светлана Ефимова</span>
+        </footer>
+    </div>
     <script src="js/index.js"></script>
 </body>
+
+</html>
