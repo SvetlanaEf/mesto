@@ -2,9 +2,14 @@
 @import url(./__like/element__like.css);
 @import url(./__name/element__name.css);
 @import url(./__info/element__info.css);
+@import url(./__delete/element__delete.css);
+@import url(./__like_active/element__like_active.css);
+@import url(./__delete-img/element__delete-img.css);
 
 .element {
+    position: relative;
     background-color: white;
     border-radius: 10px;
-    
+    width: 282px;
+    height: 361px;
 }

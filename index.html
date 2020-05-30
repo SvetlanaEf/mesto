@@ -15,97 +15,67 @@
             </a>
         </header>
 
-    <main class="content">
-        <section class="profile">
-            <img class="profile__avatar" src="images/kusto.jpg" alt="Жак-Ив Кусто">
-            <div class="profile__info">
-                <div class="profile__info-content">
-                    <h1 class="profile__title">Жак-Ив Кусто</h1>
-                    <button class="profile__edit-button">
-                        <img src="images/karandash.svg" alt="кнопка для редактирования">
-                    </button>
+        <main class="content">
+            <section class="profile">
+                <img class="profile__avatar" src="images/kusto.jpg" alt="Жак-Ив Кусто">
+                <div class="profile__info">
+                    <div class="profile__info-content">
+                        <h1 class="profile__title">Жак-Ив Кусто</h1>
+                        <button class="profile__edit-button">
+                            <img src="images/karandash.svg" alt="кнопка для редактирования">
+                        </button>
+                    </div>
+                    <p class="profile__subtitle">Исследователь океана</p>
                 </div>
-                <p class="profile__subtitle">Исследователь океана</p>
-            </div>
-            <button class="profile__add-button">
-                <img src="images/plus.svg" alt="кнопка с плюсом">
-            </button>
-        </section>
+                <button class="profile__add-button">
+                    <img src="images/plus.svg" alt="кнопка с плюсом">
+                </button>
+            </section>
 
-        <section class="elements">
-            <div class="element">
-                <img class="element__image" src="images/karach.jpg" alt="Карачаевск">
-                <div class="element__info">
-                    <span class="element__name">Карачаевск</span>
-                    <button class="element__like">
-                        <img src="images/like.svg" alt="Поставить лайк">
-                    </button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" src="images/elbrus.jpg" alt="Эльбрус">
-                <div class="element__info">
-                    <span class="element__name">Эльбрус</span>
-                    <button class="element__like">
-                        <img src="images/like.svg" alt="Поставить лайк">
-                    </button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" src="images/dombai.jpg" alt="Домбай">
-                <div class="element__info">
-                    <span class="element__name">Домбай</span>
-                    <button class="element__like">
-                        <img src="images/like.svg" alt="Поставить лайк">
-                    </button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" src="images/elbrus.jpg" alt="Эльбрус">
-                <div class="element__info">
-                    <span class="element__name">Эльбрус</span>
-                    <button class="element__like">
-                        <img src="images/like.svg" alt="Поставить лайк">
-                    </button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" src="images/dombai.jpg" alt="Домбай">
-                <div class="element__info">
-                    <span class="element__name">Домбай</span>
-                    <button class="element__like">
-                        <img src="images/like.svg" alt="Поставить лайк">
-                    </button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" src="images/karach.jpg" alt="Карачаевск">
-                <div class="element__info">
-                    <span class="element__name">Карачаево-Черкессия</span>
-                    <button class="element__like">
-                        <img src="images/like.svg" alt="Поставить лайк">
-                    </button>
-                </div>
-            </div>
-        </section>
+            <section class="elements">
+            </section>
 
-        <section class="popup">
-            <div class="popup__container">
-                <button class="popup__close"></button>
-                 <h3 class="popup__title">Редактировать профиль</h3>
-                 <form class="popup__form">
-                     <input type="text" class="popup__form-input" placeholder="Имя" name="name">
-                     <input type="text" class="popup__form-input" placeholder="Должность" name="post">
-                     <button type="submit" class="popup__form-submit">Сохранить</button>
-                  </form>
-            </div>
-        </section>
-    </main>
+            <section class="popup">
+                <div class="popup__container">
+                    <button class="popup__close"></button>
+                    <h3 class="popup__title">Редактировать профиль</h3>
+                    <form class="popup__form">
+                        <input type="text" class="popup__form-input" placeholder="Имя" name="name">
+                        <input type="text" class="popup__form-input" placeholder="Должность" name="value">
+                        <button type="submit" class="popup__form-submit">Сохранить</button>
+                    </form>
+                </div>
+            </section>
+
+            <section class="popup-card">
+                <div class="popup-card__container">
+                    <button class="popup-card__close"></button>
+                    <img class="popup-card__image" alt="фото">
+                    <p class="popup-card__name"></p>
+                </div>
+            </section>
+        </main>
+
         <footer class="footer">
             <span class="footer__text">© 2020 Светлана Ефимова</span>
         </footer>
     </div>
+
+    <template id="element">
+        <div class="element">
+            <img class="element__image" alt="фото">
+            <div class="element__info">
+                <span class="element__name"></span>
+                <button class="element__like">
+                    <img src="images/like.svg" alt="кнопка лайка">
+                </button>
+            </div>
+            <button class="element__delete">
+                <img src="images/korzina.svg" class="element__delete-img" alt="кнопка удаления">
+            </button>
+        </div>
+    </template>
+
     <script src="js/index.js"></script>
 </body>
-
 </html>

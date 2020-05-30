@@ -7,7 +7,7 @@
 @import url(./__submit-text/popup__submit-text.css);
 
 .popup {
-    display: none;
+    display: flex;
     position: fixed;
     top: 0;
     left: 0;
@@ -16,4 +16,7 @@
     padding: 50px 20px;
     background-color: rgba(0, 0, 0, .5);
     overflow-y: auto;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity .5s linear;
 }
