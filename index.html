@@ -41,9 +41,9 @@
                     <h3 class="popup__title">Редактировать профиль</h3>
                     <form class="popup__form" novalidate>
                         <input id="name-input" type="text" class="popup__form-input" placeholder="Имя" name="name" minlength="2" maxlength="40" required>
-                        <span id="name-input-error" class="popup__form-input_error"></span>
+                        <span id="name-input-error" class="popup__form-input-error"></span>
                         <input id="value-input" type="text" class="popup__form-input" placeholder="Должность" name="value" minlength="2" maxlength="200" required>
-                        <span id="value-input-error" class="popup__form-input_error"></span>
+                        <span id="value-input-error" class="popup__form-input-error"></span>
                         <button type="submit" class="popup__form-submit">Сохранить</button>
                     </form>
                 </div>
@@ -55,9 +55,9 @@
                     <h3 class="popup__title">Новое место</h3>
                     <form class="popup__form" novalidate>
                         <input id="name-input" type="text" class="popup__form-input" placeholder="Название" name="name" minlength="1" maxlength="30" required>
-                        <span id="name-input-error" class="popup__form-input_error"></span>
+                        <span id="name-input-error" class="popup__form-input-error"></span>
                         <input id="value-input" type="url" class="popup__form-input" placeholder="Ссылка на картинку" name="value" required>
-                        <span id="value-input-error" class="popup__form-input_error"></span>
+                        <span id="value-input-error" class="popup__form-input-error"></span>
                         <button type="submit" class="popup__form-submit">Создать</button>
                     </form>
                 </div>
@@ -91,6 +91,7 @@
             </button>
         </div>
     </template>
+    <script src="js/initialCards.js"></script>
     <script src="js/index.js"></script>
     <script src="js/validate.js"></script>
 </body>
