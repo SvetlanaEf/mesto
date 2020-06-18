@@ -37,7 +37,6 @@ function setEventListeners(popupForm, params) {
       isValid(popupForm, popupInput, params);
       toggleButtonState(inputList, buttonElement, params);
     });
-    toggleButtonState(inputList, buttonElement, params);
   });
 }
 
