@@ -43,14 +43,14 @@ const editProfile = (name, value) => {
 const openCardPopup = (name, imageSrc) => {
     popupCardImage.src = imageSrc;
     popupCardName.innerText = name;
-    popupToggle(popupCard);
+    openPopup(popupCard);
 };
 const insertCard = (container, card, isPrepend) => {
     if (isPrepend) {
-        return container.prepend(card);
+        container.prepend(card);
     }
 
-    return container.appendChild(card);
+    container.appendChild(card);
 }
 const clearFormErrors = (form) => {
     const errorInputs = form.querySelectorAll('.popup__form-input_error');
@@ -76,20 +76,14 @@ const closePopupOnOverlay = (event, popup) => {
         closePopup(popup);
     }
 };
-const popupToggle = (popup) => {
+const openPopup = (popup) => {
     const popupClose = popup.querySelector('.popup__close');
 
-    if (popup.classList.contains('popup_opened')) {
-        document.removeEventListener('keydown', e => closePopupOnEsc(e, popup));
-        popup.removeEventListener('click', e => closePopupOnOverlay(e, popup));
-        popupClose.removeEventListener('click', () => closePopup(popup));
-    } else {
-        document.addEventListener('keydown', e => closePopupOnEsc(e, popup));
-        popup.addEventListener('click', e => closePopupOnOverlay(e, popup));
-        popupClose.addEventListener('click', () => closePopup(popup));
-    }
+    document.addEventListener('keydown', (e) => closePopupOnEsc(e, popup), {ones: true});
+    popup.addEventListener('click', (e) => closePopupOnOverlay(e, popup), {ones: true});
+    popupClose.addEventListener('click', () => closePopup(popup), {ones: true});
 
-    popup.classList.toggle('popup_opened');
+    popup.classList.add('popup_opened');
 };
 
 initialCards.forEach(card => addCard(card.name, card.link));
@@ -103,7 +97,7 @@ profileEditButton.addEventListener('click', () => {
     popupNameInput.value = profileTitle.innerText;
     popupValueInput.value = profileSubtitle.innerText;
 
-    popupToggle(popupEditProfile);
+    openPopup(popupEditProfile);
 });
 
 cardAddButton.addEventListener('click', () => {
@@ -117,7 +111,7 @@ cardAddButton.addEventListener('click', () => {
     popupNameInput.value = '';
     popupValueInput.value = '';
 
-    popupToggle(popupAddCard);
+    openPopup(popupAddCard);
 });
 
 function getFormValues(form) {
@@ -134,7 +128,7 @@ formEditProfile.addEventListener('submit', event => {
 
     if (formValues.name && formValues.value) {
         editProfile(formValues.name, formValues.value);
-        popupToggle(popup);
+        closePopup(popup);
     }
 });
 
@@ -149,6 +143,6 @@ formAddCard.addEventListener('submit', event => {
 
     if (name && link) {
         addCard(name, link, true);
-        popupToggle(popup);
+        closePopup(popup);
     }
 });
