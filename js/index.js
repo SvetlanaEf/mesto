@@ -79,9 +79,9 @@ const closePopupOnOverlay = (event, popup) => {
 const openPopup = (popup) => {
     const popupClose = popup.querySelector('.popup__close');
 
-    document.addEventListener('keydown', (e) => closePopupOnEsc(e, popup), {ones: true});
-    popup.addEventListener('click', (e) => closePopupOnOverlay(e, popup), {ones: true});
-    popupClose.addEventListener('click', () => closePopup(popup), {ones: true});
+    document.addEventListener('keydown', (e) => closePopupOnEsc(e, popup), {once: true});
+    popup.addEventListener('click', (e) => closePopupOnOverlay(e, popup), {once: true});
+    popupClose.addEventListener('click', () => closePopup(popup), {once: true});
 
     popup.classList.add('popup_opened');
 };
