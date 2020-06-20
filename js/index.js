@@ -64,23 +64,27 @@ const clearFormErrors = (form) => {
     });
 };
 const closePopup = (popup) => {
+    document.removeEventListener('keydown', closePopupOnEsc);
+    popup.removeEventListener('click', closePopupOnOverlay);
     popup.classList.remove('popup_opened');
 };
-const closePopupOnEsc = (event, popup) => {
+const closePopupOnEsc = (event) => {
     if (event.keyCode === 27) {
+        const popup = document.querySelector('.popup_opened');
+
         closePopup(popup);
     }
 };
-const closePopupOnOverlay = (event, popup) => {
+const closePopupOnOverlay = (event) => {
     if (event.target.classList.contains('popup_opened')) {
-        closePopup(popup);
+        closePopup(event.target);
     }
 };
 const openPopup = (popup) => {
     const popupClose = popup.querySelector('.popup__close');
 
-    document.addEventListener('keydown', (e) => closePopupOnEsc(e, popup), {once: true});
-    popup.addEventListener('click', (e) => closePopupOnOverlay(e, popup), {once: true});
+    document.addEventListener('keydown', closePopupOnEsc);
+    popup.addEventListener('click', closePopupOnOverlay);
     popupClose.addEventListener('click', () => closePopup(popup), {once: true});
 
     popup.classList.add('popup_opened');
