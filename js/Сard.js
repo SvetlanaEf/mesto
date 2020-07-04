@@ -1,19 +1,23 @@
+import {openPopup} from './utils.js';
+
 export default class Card {
-    constructor(image, text, onClickImage) {
+    constructor(image, text, templateSelector) {
         this._image = image;
         this._text = text;
-        this._onClickImage = onClickImage;
-    }
+        this._templateSelector = templateSelector;
+    };
+
     //метод создает карточку
     _getTemplate() {
         const cardElement = document
-        .querySelector('#element')
+        .querySelector(this._templateSelector)
         .content
         .querySelector('.element')
         .cloneNode(true);
         
         return cardElement;
-    }
+    };
+
     generateCard() {
         this._card = this._getTemplate();
 
@@ -23,7 +27,8 @@ export default class Card {
         this._setEventListener();
 
         return this._card;
-    }
+    };
+
     //метод вешает слушателя на созданную карточку
     _setEventListener() {
         this._card.querySelector('.element__like').addEventListener('click', () => {
@@ -33,16 +38,22 @@ export default class Card {
             this._deleteCard();
         });
         this._card.querySelector('.element__image').addEventListener('click', () => {
-            this._onClickImage(this._text, this._image)
-        });
-    }
+            const popup = document.querySelector('.popup-card');
+
+            popup.querySelector('.popup-card__image').src = this._image;
+            popup.querySelector('.popup-card__name').textContent = this._text;
+            openPopup(popup);
+        })
+    };
+
     //метод лайка карточки
     _likeCard() {
         this._card.querySelector('.element__like').classList.toggle('element__like_active');
-    }
+    };
+    
     //метод удаления карточки
     _deleteCard() {
         this._card.remove();
-    }
+    };
 }
 

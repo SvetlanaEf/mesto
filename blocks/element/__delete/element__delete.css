@@ -6,3 +6,7 @@
     left: 249px;
     cursor: pointer;
 }
+
+.element__delete:hover {
+    opacity: .6;
+}
