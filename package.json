@@ -1,0 +1,19 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "Данный проект включает в себя лендинг, контент которого помогает узнать красивые и интересные места России. Функционал лендинга позволяет добавлять новые фотографии, удалять их и ставить лайки.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SvetlanaEf/mesto.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SvetlanaEf/mesto/issues"
+  },
+  "homepage": "https://github.com/SvetlanaEf/mesto#readme"
+}

@@ -1,10 +1,10 @@
-import {openPopup} from './utils.js';
 
 export default class Card {
-    constructor(image, text, templateSelector) {
+    constructor(image, text, templateSelector, handleCardClick) {
         this._image = image;
         this._text = text;
         this._templateSelector = templateSelector;
+        this._handleCardClick = handleCardClick;
     };
 
     //метод создает карточку
@@ -38,11 +38,7 @@ export default class Card {
             this._deleteCard();
         });
         this._card.querySelector('.element__image').addEventListener('click', () => {
-            const popup = document.querySelector('.popup-card');
-
-            popup.querySelector('.popup-card__image').src = this._image;
-            popup.querySelector('.popup-card__name').textContent = this._text;
-            openPopup(popup);
+            this._handleCardClick(this._text, this._image);
         })
     };
 
