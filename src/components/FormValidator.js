@@ -9,7 +9,7 @@ export default class FormValidator {
         this._errorClass = selectors.errorClass;
     }
 
-    _showInputError = (popupInput, errorMessage) => {
+    _showInputError(popupInput, errorMessage) {
         const errorElement = this._form.querySelector(`#${popupInput.id}-error`);
 
         popupInput.classList.add(this._inputErrorClass);
@@ -19,7 +19,7 @@ export default class FormValidator {
     };
 
       // Функция, которая удаляет класс с ошибкой
-    _hideInputError = (popupInput) => {
+    _hideInputError(popupInput) {
         const errorElement = this._form.querySelector(`#${popupInput.id}-error`);
         popupInput.classList.remove(this._inputErrorClass);
         //Скрываем сообщение с ошибкой
@@ -28,7 +28,7 @@ export default class FormValidator {
     };
 
     // Функция, которая проверяет валидность поля
-    _isValid = (popupInput) => {
+    _isValid(popupInput) {
         if (!popupInput.validity.valid) {
             // Если поле не проходит валидацию, покажем ошибку
             this._showInputError(popupInput, popupInput.validationMessage);

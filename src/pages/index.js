@@ -1,10 +1,12 @@
+import './index.css';
 import Card from '../components/Сard.js';
-import {initialCards} from '../js/initialCard.js';
+import {initialCards} from '../utils/initialCard.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PicturePopup.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
+
 // Popup
 const popupEditProfile = new PopupWithForm('.popup__edit-profile', submitEditProfile);
 const popupAddCard = new PopupWithForm('.popup__add-card', submitAddCard);
