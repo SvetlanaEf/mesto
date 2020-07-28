@@ -8,6 +8,8 @@
 @import url(./__form-input/popup__form-input.css);
 @import url(./__form-input-error/popup__form-input-error.css);
 @import url(./__form-submit/_disabled/popup__form-submit_disabled.css);
+@import url(./__avatar/popup__avatar.css);
+@import url(./__delete/popup__delete.css);
 
 .popup {
     display: flex;

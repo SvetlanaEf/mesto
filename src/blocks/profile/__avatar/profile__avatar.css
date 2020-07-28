@@ -3,7 +3,8 @@
     width: 122px;
     height: 122px;
     margin-right: 20px;
-    
+    margin: 0;
+    object-fit: cover;
 }
 
 @media screen and (max-width: 992px) {

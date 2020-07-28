@@ -16,7 +16,9 @@
 
         <main class="content">
             <section class="profile">
-                <img class="profile__avatar" src="images/kusto.jpg" alt="Жак-Ив Кусто">
+                <div class="profile__avatar-update">
+                    <img class="profile__avatar" src="images/kusto.jpg" alt="Аватар">
+                </div>
                 <div class="profile__info">
                     <div class="profile__info-content">
                         <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -69,6 +71,28 @@
                     <p class="popup-card__name"></p>
                 </div>
             </section>
+
+            <section class="popup popup__delete">
+                <div class="popup__container">
+                    <button class="popup__close"></button>
+                    <h3 class="popup__title">Вы уверенны?</h3>
+                    <form class="popup__form" novalidate>
+                        <button type="submit" class="popup__form-submit">Да</button>
+                    </form>
+                </div>
+            </section>
+
+            <section class="popup popup__avatar">
+                <div class="popup__container">
+                    <button class="popup__close"></button>
+                    <h3 class="popup__title">Обновить аватар</h3>
+                    <form class="popup__form" novalidate>
+                        <input id="avatar-input" type="url" class="popup__form-input" placeholder="Ссылка на новый аватар" name="avatar" required>
+                        <span id="avatar-input-error" class="popup__form-input-error"></span>
+                        <button type="submit" class="popup__form-submit">Сохранить</button>
+                    </form>
+                </div>
+            </section>
         </main>
 
         <footer class="footer">
@@ -81,9 +105,12 @@
             <img class="element__image" alt="фото">
             <div class="element__info">
                 <span class="element__name"></span>
-                <button class="element__like">
-                    <img src="images/like.svg" alt="кнопка лайка">
-                </button>
+                <div class="element__like-counter">
+                    <button class="element__like">
+                        <img src="images/like.svg" alt="кнопка лайка">
+                    </button>
+                    <span class="element__like-number">0</span>
+                </div>
             </div>
             <button class="element__delete">
                 <img src="images/korzina.svg" class="element__delete-img" alt="кнопка удаления">

@@ -5,6 +5,8 @@
 @import url(./__delete/element__delete.css);
 @import url(./__like_active/element__like_active.css);
 @import url(./__delete-img/element__delete-img.css);
+@import url(./__like-counter/element__like-counter.css);
+@import url(./__like-number/element__like-number.css);
 
 .element {
     position: relative;
