@@ -37,6 +37,10 @@ export default class Card {
     this._card.querySelector(".element__name").textContent = this._item.name;
     this._cardLikeCount.textContent = this._item.likes.length;
 
+    if (this._item.likes.find(({ _id }) => _id === this._currentUserId)) {
+      this._cardLike.classList.add('element__like_active');
+    }
+
     if (this._currentUserId !== this._item.owner._id) {
       this._cardDeleteButton.remove();
     }

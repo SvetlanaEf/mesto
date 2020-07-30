@@ -109,13 +109,15 @@ function submitEditProfile({ name, value }) {
     formEditProfileSubmit.disabled = true;
     formEditProfileSubmit.textContent = "Загрузка...";
 
-    api.editUser(name, value).then((response) => {
-      userInfo.setUserInfo({ name: response.name, info: response.about });
-      popupEditProfile.close();
-      popupEditProfile.clearForm();
-      formEditProfileSubmit.disabled = false;
-      formEditProfileSubmit.textContent = "Сохранить";
-    });
+    api.editUser(name, value)
+      .then((response) => {
+        userInfo.setUserInfo({ name: response.name, info: response.about });
+        popupEditProfile.clearForm();
+        formEditProfileSubmit.disabled = false;
+        formEditProfileSubmit.textContent = "Сохранить";
+      })
+      .catch(e => console.error(`Error edit user ${e}`))
+      .finally(() => popupEditProfile.close());
   }
 }
 
@@ -124,39 +126,33 @@ function submitAddCard({ name, value }) {
     formAddCardSubmit.disabled = true;
     formAddCardSubmit.textContent = "Загрузка...";
 
-    api.addNewCard(name, value).then((response) => {
-      const handleDelete = (params) => popupDelete.open(params);
-      const handleLike = (cardId) => {
-        const method = card.isLiked() ? "unLikeCard" : "likeCard";
+    api.addNewCard(name, value)
+      .then((response) => {
+        const card = new Card(
+          response,
+          templateSelector,
+          handleCardClick,
+          currentUserId,
+          handleDeleteCard,
+          cardId => handleLikeCard(cardId, card)
+        );
+        const cardTemplate = card.generateCard();
 
-        api[method](cardId).then((data) => {
-          card.likeCard(data.likes.length);
-        });
-      };
-      const card = new Card(
-        response,
-        templateSelector,
-        handleCardClick,
-        currentUserId,
-        handleDelete,
-        handleLike
-      );
-      const cardTemplate = card.generateCard();
-
-      insertCard(elementsContainer, cardTemplate, true);
-      popupAddCard.close();
-      popupAddCard.clearForm();
-      formAddCardSubmit.disabled = false;
-      formAddCardSubmit.textContent = "Сохранить";
-    });
+        insertCard(elementsContainer, cardTemplate, true);
+        popupAddCard.clearForm();
+        formAddCardSubmit.disabled = false;
+        formAddCardSubmit.textContent = "Сохранить";
+      })
+      .catch(e => console.error(`Error add new card ${e}`))
+      .finally(() => popupAddCard.close());
   }
 }
 
 function deleteCard(_, params) {
-  api.deleteCard(params.cardId).then(() => {
-    params.card.remove();
-    popupDelete.close();
-  });
+  api.deleteCard(params.cardId)
+    .then(() => params.card.remove())
+    .catch(e => console.error(`Error delete card ${e}`))
+    .finally(() => popupDelete.close());
 }
 
 const formSelectors = {
@@ -192,12 +188,26 @@ profileAvatarValidator.enableValidation();
 function updateAvatar({ avatar }) {
   formAvatarSubmit.disabled = true;
   formAvatarSubmit.textContent = "Загрузка...";
-  api.updateAvatar(avatar).then((response) => {
-    userInfo.setUserAvatar(response.avatar);
-    popupAvatar.close();
-    popupAvatar.clearForm();
-    formAvatarSubmit.disabled = false;
-    formAvatarSubmit.textContent = "Сохранить";
+  api.updateAvatar(avatar)
+    .then((response) => {
+      userInfo.setUserAvatar(response.avatar);
+      popupAvatar.clearForm();
+      formAvatarSubmit.disabled = false;
+      formAvatarSubmit.textContent = "Сохранить";
+    })
+    .catch((e) => console.error(`Error update avatar ${e}`))
+    .finally(() => popupAvatar.close());
+}
+
+function handleDeleteCard(params) {
+  popupDelete.open(params);
+}
+
+function handleLikeCard(cardId, card) {
+  const method = card.isLiked() ? "unLikeCard" : "likeCard";
+
+  api[method](cardId).then((data) => {
+    card.likeCard(data.likes.length);
   });
 }
 
@@ -210,34 +220,28 @@ api
     return response;
   })
   .then(() => {
-    api.getInitialCards().then((initialCards) => {
-      const cardList = new Section(
-        {
-          items: initialCards, //передаем массив
-          renderer: (item) => {
-            const handleDelete = (params) => popupDelete.open(params);
-            const handleLike = (cardId) => {
-              const method = card.isLiked() ? "unLikeCard" : "likeCard";
-
-              api[method](cardId).then((data) => {
-                card.likeCard(data.likes.length);
-              });
-            };
-            const card = new Card(
-              item,
-              templateSelector,
-              handleCardClick,
-              currentUserId,
-              handleDelete,
-              handleLike
-            );
-            const cardElement = card.generateCard(); //создаем карточки
-            return cardElement;
+    api.getInitialCards()
+      .then((initialCards) => {
+        const cardList = new Section(
+          {
+            items: initialCards, //передаем массив
+            renderer: (item) => {
+              const card = new Card(
+                item,
+                templateSelector,
+                handleCardClick,
+                currentUserId,
+                handleDeleteCard,
+                cardId => handleLikeCard(cardId, card)
+              );
+              const cardElement = card.generateCard(); //создаем карточки
+              return cardElement;
+            },
           },
-        },
-        ".elements"
-      );
+          ".elements"
+        );
 
-      cardList.renderItems();
-    });
+        cardList.renderItems();
+      })
+      .catch((e) => console.error(`Error fetching initial cards: ${e}`));
   });
